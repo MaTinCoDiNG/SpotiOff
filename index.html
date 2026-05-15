@@ -1,0 +1,1578 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>SPOTIOFF</title>
+
+<!-- FONT -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+
+<!-- ICONS -->
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+/>
+
+<style>
+
+:root{
+
+--bg:#050816;
+--bg2:#09101d;
+
+--text:#ffffff;
+--sub:#9aa4c0;
+
+--green:#72ff96;
+--green2:#1dd75f;
+
+--glass:rgba(255,255,255,.06);
+--glass-border:rgba(255,255,255,.1);
+
+--shadow:
+0 8px 32px rgba(0,0,0,.35),
+inset 0 1px 1px rgba(255,255,255,.04);
+
+}
+
+.light{
+
+--bg:#edf2ff;
+--bg2:#dfe8ff;
+
+--text:#0f172a;
+--sub:#4b5563;
+
+--glass:rgba(255,255,255,.38);
+--glass-border:rgba(255,255,255,.55);
+
+--shadow:
+0 8px 32px rgba(31,38,135,.12),
+inset 0 1px 1px rgba(255,255,255,.8);
+
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Vazirmatn',sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+
+background:
+radial-gradient(circle at top right,rgba(114,255,150,.15),transparent 30%),
+radial-gradient(circle at bottom left,rgba(0,119,255,.13),transparent 30%),
+linear-gradient(140deg,var(--bg),var(--bg2));
+
+color:var(--text);
+
+overflow-x:hidden;
+
+transition:.4s;
+
+min-height:100vh;
+
+}
+
+/* BLOBS */
+
+body::before{
+
+content:'';
+
+position:fixed;
+
+width:700px;
+height:700px;
+
+background:radial-gradient(circle,var(--green),transparent 70%);
+
+top:-250px;
+right:-250px;
+
+filter:blur(80px);
+
+opacity:.12;
+
+animation:blob1 8s infinite alternate;
+
+pointer-events:none;
+
+}
+
+body::after{
+
+content:'';
+
+position:fixed;
+
+width:700px;
+height:700px;
+
+background:#0077ff;
+
+bottom:-250px;
+left:-250px;
+
+filter:blur(90px);
+
+opacity:.1;
+
+animation:blob2 10s infinite alternate;
+
+pointer-events:none;
+
+}
+
+@keyframes blob1{
+
+from{
+transform:translate(0,0);
+}
+
+to{
+transform:translate(-40px,40px);
+}
+
+}
+
+@keyframes blob2{
+
+from{
+transform:translate(0,0);
+}
+
+to{
+transform:translate(40px,-40px);
+}
+
+}
+
+.container{
+
+width:92%;
+max-width:1450px;
+
+margin:auto;
+
+position:relative;
+z-index:5;
+
+}
+
+/* GLASS */
+
+.glass{
+
+background:var(--glass);
+
+border:1px solid var(--glass-border);
+
+backdrop-filter:blur(35px);
+-webkit-backdrop-filter:blur(35px);
+
+box-shadow:var(--shadow);
+
+}
+
+/* NAVBAR */
+
+nav{
+
+margin-top:20px;
+
+padding:18px 28px;
+
+border-radius:28px;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+position:sticky;
+top:15px;
+
+z-index:999;
+
+}
+
+.logo{
+
+display:flex;
+align-items:center;
+gap:15px;
+
+font-size:28px;
+font-weight:900;
+
+}
+
+.logo img{
+
+width:58px;
+
+filter:
+drop-shadow(0 0 20px rgba(114,255,150,.5));
+
+}
+
+.nav-links{
+
+display:flex;
+align-items:center;
+gap:35px;
+
+}
+
+.nav-links a{
+
+text-decoration:none;
+
+color:var(--text);
+
+font-weight:500;
+
+position:relative;
+
+transition:.3s;
+
+}
+
+.nav-links a::after{
+
+content:'';
+
+position:absolute;
+
+right:0;
+bottom:-8px;
+
+width:0%;
+height:2px;
+
+background:var(--green);
+
+transition:.4s;
+
+}
+
+.nav-links a:hover{
+color:var(--green);
+}
+
+.nav-links a:hover::after{
+width:100%;
+}
+
+.actions{
+
+display:flex;
+align-items:center;
+gap:15px;
+
+}
+
+.theme-btn{
+
+width:55px;
+height:55px;
+
+border:none;
+outline:none;
+
+cursor:pointer;
+
+border-radius:18px;
+
+font-size:20px;
+
+color:var(--text);
+
+transition:.4s;
+
+}
+
+.theme-btn:hover{
+transform:rotate(20deg);
+}
+
+.telegram-btn{
+
+padding:14px 24px;
+
+border-radius:18px;
+
+background:linear-gradient(135deg,var(--green),var(--green2));
+
+color:#000;
+
+font-weight:800;
+
+text-decoration:none;
+
+display:flex;
+align-items:center;
+gap:10px;
+
+box-shadow:0 0 30px rgba(114,255,150,.35);
+
+transition:.4s;
+
+}
+
+.telegram-btn:hover{
+
+transform:translateY(-4px);
+
+}
+
+/* HERO */
+
+.hero{
+
+min-height:95vh;
+
+display:grid;
+grid-template-columns:1fr 1fr;
+
+align-items:center;
+
+gap:70px;
+
+padding-top:60px;
+
+}
+
+.hero-text h1{
+
+font-size:88px;
+
+line-height:1.08;
+
+margin-bottom:25px;
+
+font-weight:900;
+
+}
+
+.hero-text h1 span{
+
+background:linear-gradient(135deg,#72ff96,#1dd75f);
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+}
+
+.hero-text p{
+
+font-size:18px;
+
+line-height:2.2;
+
+color:var(--sub);
+
+margin-bottom:40px;
+
+max-width:650px;
+
+}
+
+.hero-buttons{
+
+display:flex;
+gap:20px;
+
+}
+
+.btn{
+
+padding:18px 35px;
+
+border:none;
+
+border-radius:22px;
+
+cursor:pointer;
+
+font-size:16px;
+
+font-weight:700;
+
+transition:.4s;
+
+}
+
+.btn-primary{
+
+background:linear-gradient(135deg,var(--green),var(--green2));
+
+color:#000;
+
+box-shadow:0 0 30px rgba(114,255,150,.3);
+
+}
+
+.btn-primary:hover{
+
+transform:translateY(-5px) scale(1.03);
+
+}
+
+.btn-secondary{
+
+background:var(--glass);
+
+border:1px solid var(--glass-border);
+
+color:var(--text);
+
+}
+
+.hero-card{
+
+height:650px;
+
+border-radius:45px;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.hero-card::before{
+
+content:'';
+
+position:absolute;
+
+width:500px;
+height:500px;
+
+background:radial-gradient(circle,var(--green),transparent);
+
+opacity:.22;
+
+filter:blur(50px);
+
+}
+
+.hero-card::after{
+
+content:'';
+
+position:absolute;
+
+inset:0;
+
+background:
+linear-gradient(
+120deg,
+transparent,
+rgba(255,255,255,.08),
+transparent
+);
+
+transform:translateX(-100%);
+
+animation:shine 5s infinite;
+
+}
+
+@keyframes shine{
+
+100%{
+transform:translateX(100%);
+}
+
+}
+
+.main-logo{
+
+width:340px;
+
+animation:floatLogo 6s ease-in-out infinite;
+
+filter:
+drop-shadow(0 0 35px rgba(114,255,150,.5))
+drop-shadow(0 0 60px rgba(114,255,150,.25));
+
+}
+
+@keyframes floatLogo{
+
+0%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-20px) rotate(3deg);
+}
+
+100%{
+transform:translateY(0px);
+}
+
+}
+
+/* SECTION TITLE */
+
+.section-title{
+
+font-size:58px;
+
+text-align:center;
+
+margin-bottom:60px;
+
+font-weight:900;
+
+}
+
+/* CARDS */
+
+.cards{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+gap:25px;
+
+}
+
+.card{
+
+padding:35px;
+
+border-radius:35px;
+
+transition:.4s;
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.card::before{
+
+content:'';
+
+position:absolute;
+
+width:250px;
+height:250px;
+
+background:radial-gradient(circle,var(--green),transparent);
+
+opacity:.12;
+
+top:-100px;
+left:-100px;
+
+}
+
+.card:hover{
+
+transform:translateY(-12px);
+
+box-shadow:
+0 15px 40px rgba(0,0,0,.35),
+0 0 30px rgba(114,255,150,.18);
+
+}
+
+.card-icon{
+
+width:75px;
+height:75px;
+
+border-radius:24px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+font-size:28px;
+
+margin-bottom:25px;
+
+background:rgba(255,255,255,.08);
+
+border:1px solid rgba(255,255,255,.12);
+
+color:var(--green);
+
+}
+
+.card h3{
+
+font-size:34px;
+
+margin-bottom:12px;
+
+}
+
+.price{
+
+font-size:44px;
+
+font-weight:900;
+
+color:var(--green);
+
+margin-bottom:18px;
+
+}
+
+.card p{
+
+line-height:2;
+
+color:var(--sub);
+
+margin-bottom:25px;
+
+}
+
+.buy-btn{
+
+width:100%;
+
+padding:16px;
+
+border:none;
+
+border-radius:18px;
+
+cursor:pointer;
+
+font-weight:800;
+
+font-size:16px;
+
+background:linear-gradient(135deg,var(--green),var(--green2));
+
+color:#000;
+
+transition:.4s;
+
+}
+
+.buy-btn:hover{
+
+transform:scale(1.02);
+
+}
+
+/* SOCIAL */
+
+.socials{
+
+margin-top:130px;
+
+}
+
+.social-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+
+gap:25px;
+
+}
+
+.social{
+
+padding:30px;
+
+border-radius:30px;
+
+text-align:center;
+
+transition:.4s;
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.social::before{
+
+content:'';
+
+position:absolute;
+
+width:180px;
+height:180px;
+
+background:radial-gradient(circle,var(--green),transparent);
+
+opacity:.1;
+
+top:-80px;
+right:-80px;
+
+}
+
+.social:hover{
+
+transform:translateY(-10px) scale(1.03);
+
+box-shadow:
+0 15px 35px rgba(0,0,0,.35),
+0 0 30px rgba(114,255,150,.15);
+
+}
+
+.social i{
+
+font-size:42px;
+
+margin-bottom:18px;
+
+color:var(--green);
+
+}
+
+.social h4{
+
+font-size:24px;
+
+margin-bottom:8px;
+
+}
+
+.social p{
+
+color:var(--sub);
+
+}
+
+/* CTA */
+
+.cta{
+
+margin-top:130px;
+
+padding:60px;
+
+border-radius:45px;
+
+display:flex;
+
+justify-content:space-between;
+align-items:center;
+
+gap:50px;
+
+overflow:hidden;
+
+position:relative;
+
+}
+
+.cta::before{
+
+content:'';
+
+position:absolute;
+
+width:450px;
+height:450px;
+
+background:radial-gradient(circle,var(--green),transparent);
+
+opacity:.18;
+
+left:-120px;
+bottom:-120px;
+
+filter:blur(60px);
+
+}
+
+.cta-text h2{
+
+font-size:54px;
+
+margin-bottom:18px;
+
+}
+
+.cta-text p{
+
+line-height:2.2;
+
+color:var(--sub);
+
+margin-bottom:30px;
+
+}
+
+.cta img{
+
+width:240px;
+
+filter:
+drop-shadow(0 0 40px rgba(114,255,150,.35));
+
+}
+
+/* FOOTER */
+
+footer{
+
+margin-top:120px;
+
+padding:70px 50px 40px;
+
+position:relative;
+
+overflow:hidden;
+
+border-top:
+1px solid rgba(255,255,255,.08);
+
+}
+
+.footer-bg{
+
+position:absolute;
+
+inset:0;
+
+background:
+linear-gradient(
+180deg,
+transparent,
+rgba(114,255,150,.05)
+);
+
+pointer-events:none;
+
+}
+
+.footer-grid{
+
+display:grid;
+
+grid-template-columns:2fr 1fr 1fr 1fr;
+
+gap:40px;
+
+position:relative;
+
+z-index:2;
+
+}
+
+.footer-logo{
+
+display:flex;
+align-items:center;
+gap:15px;
+
+font-size:32px;
+font-weight:900;
+
+margin-bottom:20px;
+
+}
+
+.footer-logo img{
+
+width:60px;
+
+}
+
+.footer-about{
+
+line-height:2.1;
+
+color:var(--sub);
+
+max-width:400px;
+
+}
+
+.footer-col h3{
+
+margin-bottom:20px;
+
+font-size:22px;
+
+}
+
+.footer-links{
+
+display:flex;
+flex-direction:column;
+gap:14px;
+
+}
+
+.footer-links a{
+
+text-decoration:none;
+
+color:var(--sub);
+
+transition:.3s;
+
+}
+
+.footer-links a:hover{
+
+color:var(--green);
+
+transform:translateX(-5px);
+
+}
+
+.footer-bottom{
+
+margin-top:50px;
+
+padding-top:30px;
+
+border-top:
+1px solid rgba(255,255,255,.08);
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+color:var(--sub);
+
+flex-wrap:wrap;
+
+gap:20px;
+
+position:relative;
+z-index:2;
+
+}
+
+.footer-socials{
+
+display:flex;
+gap:15px;
+
+}
+
+.footer-socials a{
+
+width:45px;
+height:45px;
+
+border-radius:15px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+text-decoration:none;
+
+color:var(--text);
+
+background:var(--glass);
+
+border:1px solid var(--glass-border);
+
+transition:.4s;
+
+}
+
+.footer-socials a:hover{
+
+background:linear-gradient(135deg,var(--green),var(--green2));
+
+color:#000;
+
+transform:translateY(-5px);
+
+}
+
+/* MOBILE */
+
+@media(max-width:1150px){
+
+.hero{
+
+grid-template-columns:1fr;
+
+text-align:center;
+
+}
+
+.hero-text p{
+margin:auto auto 40px;
+}
+
+.hero-buttons{
+justify-content:center;
+}
+
+.hero-card{
+height:520px;
+}
+
+.cta{
+
+flex-direction:column;
+text-align:center;
+
+}
+
+.footer-grid{
+
+grid-template-columns:1fr 1fr;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.hero-text h1{
+font-size:58px;
+}
+
+.section-title{
+font-size:42px;
+}
+
+.nav-links{
+display:none;
+}
+
+.telegram-btn span{
+display:none;
+}
+
+.footer-grid{
+grid-template-columns:1fr;
+}
+
+.footer-bottom{
+
+flex-direction:column;
+text-align:center;
+
+}
+
+.hero-card{
+height:420px;
+}
+
+.main-logo{
+width:250px;
+}
+
+.cta img{
+width:180px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- NAVBAR -->
+
+<nav class="glass">
+
+<div class="logo">
+
+<img src="green.png">
+
+SPOTIOFF
+
+</div>
+
+<div class="nav-links">
+
+<a href="#home">خانه</a>
+<a href="#plans">پلن‌ها</a>
+<a href="#socials">شبکه‌ها</a>
+<a href="#support">پشتیبانی</a>
+
+</div>
+
+<div class="actions">
+
+<button class="theme-btn glass" id="themeBtn">
+
+<i class="fa-solid fa-moon"></i>
+
+</button>
+
+<a href="https://t.me/SpotioffSup" class="telegram-btn">
+
+<i class="fa-brands fa-telegram"></i>
+
+<span>خرید سریع</span>
+
+</a>
+
+</div>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+<div class="hero-text">
+
+<h1>
+
+فروش اشتراک ویژه
+<br>
+
+<span>V2Ray</span>
+
+</h1>
+
+<p>
+
+سرویس فوق‌سریع و پایدار با ساب اختصاصی،
+بدون محدودیت تعداد کاربر،
+پینگ پایین،
+امنیت بالا
+و پشتیبانی حرفه‌ای 24/7.
+
+</p>
+
+<div class="hero-buttons">
+
+<a href="#plans">
+
+<button class="btn btn-primary">
+
+<i class="fa-solid fa-bolt"></i>
+
+خرید اشتراک
+
+</button>
+
+</a>
+
+<a href="#socials">
+
+<button class="btn btn-secondary">
+
+<i class="fa-solid fa-layer-group"></i>
+
+شبکه‌های اجتماعی
+
+</button>
+
+</a>
+
+</div>
+
+</div>
+
+<div class="hero-card glass">
+
+<img src="green.png" class="main-logo">
+
+</div>
+
+</section>
+
+<!-- PLANS -->
+
+<section id="plans">
+
+<h2 class="section-title">
+پلن‌های ویژه
+</h2>
+
+<div class="cards">
+
+<div class="card glass">
+
+<div class="card-icon">
+<i class="fa-solid fa-fire"></i>
+</div>
+
+<h3>1GB</h3>
+
+<div class="price">
+330K
+</div>
+
+<p>
+
+اشتراک 30 روزه
+با سرعت بالا
+و اتصال پایدار
+
+</p>
+
+<button class="buy-btn">
+خرید اکنون
+</button>
+
+</div>
+
+<div class="card glass">
+
+<div class="card-icon">
+<i class="fa-solid fa-rocket"></i>
+</div>
+
+<h3>5GB</h3>
+
+<div class="price">
+1.44M
+</div>
+
+<p>
+
+مناسب استفاده حرفه‌ای
+و بدون محدودیت دستگاه
+
+</p>
+
+<button class="buy-btn">
+خرید اکنون
+</button>
+
+</div>
+
+<div class="card glass">
+
+<div class="card-icon">
+<i class="fa-solid fa-crown"></i>
+</div>
+
+<h3>10GB</h3>
+
+<div class="price">
+2.85M
+</div>
+
+<p>
+
+پلن Economy
+با ساب اختصاصی
+و پینگ پایین
+
+</p>
+
+<button class="buy-btn">
+خرید اکنون
+</button>
+
+</div>
+
+<div class="card glass">
+
+<div class="card-icon">
+<i class="fa-solid fa-gem"></i>
+</div>
+
+<h3>30GB VIP</h3>
+
+<div class="price">
+7.25M
+</div>
+
+<p>
+
+سرویس VIP
+بدون محدودیت کاربر
+و سرعت فوق‌العاده
+
+</p>
+
+<button class="buy-btn">
+خرید اکنون
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- SOCIALS -->
+
+<section class="socials" id="socials">
+
+<h2 class="section-title">
+شبکه‌های اجتماعی
+</h2>
+
+<div class="social-grid">
+
+<div class="social glass">
+
+<i class="fa-brands fa-telegram"></i>
+
+<h4>Telegram</h4>
+
+<p>@spotioff</p>
+
+</div>
+
+<div class="social glass">
+
+<i class="fa-solid fa-cube"></i>
+
+<h4>Rubika</h4>
+
+<p>@spotioff</p>
+
+</div>
+
+<div class="social glass">
+
+<i class="fa-solid fa-circle-check"></i>
+
+<h4>Bale</h4>
+
+<p>@spotioff</p>
+
+</div>
+
+<div class="social glass">
+
+<i class="fa-solid fa-comment"></i>
+
+<h4>Soroush</h4>
+
+<p>@spotioff</p>
+
+</div>
+
+<div class="social glass">
+
+<i class="fa-solid fa-paper-plane"></i>
+
+<h4>iGap</h4>
+
+<p>@spotioff</p>
+
+</div>
+
+<div class="social glass">
+
+<i class="fa-solid fa-globe"></i>
+
+<h4>Eitaa</h4>
+
+<p>@spotioff</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CTA -->
+
+<section class="cta glass" id="support">
+
+<div class="cta-text">
+
+<h2>
+
+همین حالا وصل شو
+
+</h2>
+
+<p>
+
+برای خرید اشتراک ویژه،
+دریافت مشاوره رایگان
+و پشتیبانی سریع
+از طریق تلگرام پیام بده.
+
+</p>
+
+<a href="https://t.me/SpotioffSup" class="telegram-btn">
+
+<i class="fa-brands fa-telegram"></i>
+
+T.me/SpotioffSup
+
+</a>
+
+</div>
+
+<img src="blackwhite.png">
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="footer-bg"></div>
+
+<div class="footer-grid">
+
+<div>
+
+<div class="footer-logo">
+
+<img src="gray.png">
+
+SPOTIOFF
+
+</div>
+
+<p class="footer-about">
+
+ارائه‌دهنده سرویس‌های ویژه V2Ray
+با تمرکز بر سرعت،
+امنیت،
+پایداری
+و تجربه پریمیوم واقعی.
+
+</p>
+
+</div>
+
+<div class="footer-col">
+
+<h3>
+دسترسی سریع
+</h3>
+
+<div class="footer-links">
+
+<a href="#home">خانه</a>
+<a href="#plans">پلن‌ها</a>
+<a href="#socials">شبکه‌ها</a>
+<a href="#support">پشتیبانی</a>
+
+</div>
+
+</div>
+
+<div class="footer-col">
+
+<h3>
+خدمات
+</h3>
+
+<div class="footer-links">
+
+<a href="#">اشتراک ویژه</a>
+<a href="#">ساب اختصاصی</a>
+<a href="#">سرورهای پرسرعت</a>
+<a href="#">پشتیبانی 24/7</a>
+
+</div>
+
+</div>
+
+<div class="footer-col">
+
+<h3>
+ارتباط
+</h3>
+
+<div class="footer-links">
+
+<a href="https://t.me/SpotioffSup">
+Telegram Support
+</a>
+
+<a href="#">
+@spotioff
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="footer-bottom">
+
+<div>
+
+© 2025 SPOTIOFF — All Rights Reserved
+
+</div>
+
+<div class="footer-socials">
+
+<a href="#">
+<i class="fa-brands fa-telegram"></i>
+</a>
+
+<a href="#">
+<i class="fa-brands fa-instagram"></i>
+</a>
+
+<a href="#">
+<i class="fa-brands fa-x-twitter"></i>
+</a>
+
+</div>
+
+</div>
+
+</footer>
+
+</div>
+
+<script>
+
+const themeBtn = document.getElementById('themeBtn');
+
+themeBtn.onclick = ()=>{
+
+document.body.classList.toggle('light');
+
+if(document.body.classList.contains('light')){
+
+themeBtn.innerHTML =
+'<i class="fa-solid fa-sun"></i>';
+
+}else{
+
+themeBtn.innerHTML =
+'<i class="fa-solid fa-moon"></i>';
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
