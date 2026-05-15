@@ -1,3 +1,8 @@
+<!-- =========================
+SPOTIOFF - FULL RESPONSIVE
+FIXED VERSION
+========================= -->
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 
@@ -8,11 +13,10 @@
 
 <title>SPOTIOFF</title>
 
-<!-- FONT -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
+
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
 
-<!-- ICONS -->
 <link
 rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -20,42 +24,52 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
 <style>
 
+/* =========================
+ROOT
+========================= */
+
 :root{
 
 --bg:#050816;
 --bg2:#09101d;
 
 --text:#ffffff;
---sub:#9aa4c0;
+--sub:#9ea9c7;
 
 --green:#72ff96;
---green2:#1dd75f;
+--green2:#19d86b;
 
 --glass:rgba(255,255,255,.06);
---glass-border:rgba(255,255,255,.1);
+--glass-border:rgba(255,255,255,.10);
 
 --shadow:
 0 8px 32px rgba(0,0,0,.35),
-inset 0 1px 1px rgba(255,255,255,.04);
+inset 0 1px 1px rgba(255,255,255,.05);
 
 }
 
-.light{
+/* LIGHT */
 
---bg:#edf2ff;
---bg2:#dfe8ff;
+body.light{
 
---text:#0f172a;
+--bg:#eef3ff;
+--bg2:#dce7ff;
+
+--text:#111827;
 --sub:#4b5563;
 
---glass:rgba(255,255,255,.38);
---glass-border:rgba(255,255,255,.55);
+--glass:rgba(255,255,255,.36);
+--glass-border:rgba(255,255,255,.48);
 
 --shadow:
 0 8px 32px rgba(31,38,135,.12),
-inset 0 1px 1px rgba(255,255,255,.8);
+inset 0 1px 1px rgba(255,255,255,.7);
 
 }
+
+/* =========================
+GLOBAL
+========================= */
 
 *{
 margin:0;
@@ -71,15 +85,17 @@ scroll-behavior:smooth;
 body{
 
 background:
-radial-gradient(circle at top right,rgba(114,255,150,.15),transparent 30%),
-radial-gradient(circle at bottom left,rgba(0,119,255,.13),transparent 30%),
-linear-gradient(140deg,var(--bg),var(--bg2));
+radial-gradient(circle at top right,rgba(114,255,150,.12),transparent 30%),
+radial-gradient(circle at bottom left,rgba(0,119,255,.10),transparent 30%),
+linear-gradient(145deg,var(--bg),var(--bg2));
 
 color:var(--text);
 
 overflow-x:hidden;
 
-transition:.4s;
+transition:
+background .35s ease,
+color .35s ease;
 
 min-height:100vh;
 
@@ -93,21 +109,23 @@ content:'';
 
 position:fixed;
 
-width:700px;
-height:700px;
+width:650px;
+height:650px;
 
 background:radial-gradient(circle,var(--green),transparent 70%);
 
 top:-250px;
 right:-250px;
 
-filter:blur(80px);
-
 opacity:.12;
 
-animation:blob1 8s infinite alternate;
+filter:blur(80px);
+
+animation:blob1 10s infinite alternate;
 
 pointer-events:none;
+
+z-index:0;
 
 }
 
@@ -117,21 +135,23 @@ content:'';
 
 position:fixed;
 
-width:700px;
-height:700px;
+width:650px;
+height:650px;
 
 background:#0077ff;
 
 bottom:-250px;
 left:-250px;
 
-filter:blur(90px);
+opacity:.10;
 
-opacity:.1;
+filter:blur(100px);
 
-animation:blob2 10s infinite alternate;
+animation:blob2 12s infinite alternate;
 
 pointer-events:none;
+
+z-index:0;
 
 }
 
@@ -159,6 +179,10 @@ transform:translate(40px,-40px);
 
 }
 
+/* =========================
+CONTAINER
+========================= */
+
 .container{
 
 width:92%;
@@ -167,11 +191,13 @@ max-width:1450px;
 margin:auto;
 
 position:relative;
-z-index:5;
+z-index:2;
 
 }
 
-/* GLASS */
+/* =========================
+GLASS
+========================= */
 
 .glass{
 
@@ -179,26 +205,30 @@ background:var(--glass);
 
 border:1px solid var(--glass-border);
 
-backdrop-filter:blur(35px);
--webkit-backdrop-filter:blur(35px);
+backdrop-filter:blur(30px);
+-webkit-backdrop-filter:blur(30px);
 
 box-shadow:var(--shadow);
 
 }
 
-/* NAVBAR */
+/* =========================
+NAVBAR
+========================= */
 
 nav{
 
-margin-top:20px;
+margin-top:18px;
 
-padding:18px 28px;
+padding:16px 22px;
 
 border-radius:28px;
 
 display:flex;
 justify-content:space-between;
 align-items:center;
+
+gap:20px;
 
 position:sticky;
 top:15px;
@@ -211,19 +241,24 @@ z-index:999;
 
 display:flex;
 align-items:center;
-gap:15px;
+gap:14px;
 
-font-size:28px;
+font-size:26px;
 font-weight:900;
+
+white-space:nowrap;
 
 }
 
 .logo img{
 
-width:58px;
+width:54px;
+height:54px;
+
+object-fit:contain;
 
 filter:
-drop-shadow(0 0 20px rgba(114,255,150,.5));
+drop-shadow(0 0 20px rgba(114,255,150,.4));
 
 }
 
@@ -231,7 +266,7 @@ drop-shadow(0 0 20px rgba(114,255,150,.5));
 
 display:flex;
 align-items:center;
-gap:35px;
+gap:30px;
 
 }
 
@@ -263,30 +298,38 @@ height:2px;
 
 background:var(--green);
 
-transition:.4s;
+transition:.35s;
 
 }
 
 .nav-links a:hover{
+
 color:var(--green);
+
 }
 
 .nav-links a:hover::after{
+
 width:100%;
+
 }
 
 .actions{
 
 display:flex;
 align-items:center;
-gap:15px;
+gap:12px;
 
 }
 
+/* =========================
+THEME BUTTON FIXED
+========================= */
+
 .theme-btn{
 
-width:55px;
-height:55px;
+width:52px;
+height:52px;
 
 border:none;
 outline:none;
@@ -295,39 +338,61 @@ cursor:pointer;
 
 border-radius:18px;
 
-font-size:20px;
+font-size:18px;
 
 color:var(--text);
 
-transition:.4s;
+background:var(--glass);
+
+border:1px solid var(--glass-border);
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+transition:
+background .3s,
+color .3s,
+border .3s;
+
+flex-shrink:0;
 
 }
 
-.theme-btn:hover{
-transform:rotate(20deg);
+.theme-btn i{
+
+transition:.3s;
+
 }
+
+/* =========================
+TELEGRAM BUTTON
+========================= */
 
 .telegram-btn{
 
-padding:14px 24px;
+padding:14px 22px;
 
 border-radius:18px;
 
 background:linear-gradient(135deg,var(--green),var(--green2));
 
+text-decoration:none;
+
 color:#000;
 
 font-weight:800;
 
-text-decoration:none;
-
 display:flex;
 align-items:center;
+justify-content:center;
 gap:10px;
 
-box-shadow:0 0 30px rgba(114,255,150,.35);
+white-space:nowrap;
 
-transition:.4s;
+transition:.35s;
+
+box-shadow:0 0 30px rgba(114,255,150,.28);
 
 }
 
@@ -337,18 +402,20 @@ transform:translateY(-4px);
 
 }
 
-/* HERO */
+/* =========================
+HERO
+========================= */
 
 .hero{
 
-min-height:95vh;
+min-height:92vh;
 
 display:grid;
 grid-template-columns:1fr 1fr;
 
 align-items:center;
 
-gap:70px;
+gap:60px;
 
 padding-top:60px;
 
@@ -356,7 +423,7 @@ padding-top:60px;
 
 .hero-text h1{
 
-font-size:88px;
+font-size:82px;
 
 line-height:1.08;
 
@@ -368,7 +435,7 @@ font-weight:900;
 
 .hero-text h1 span{
 
-background:linear-gradient(135deg,#72ff96,#1dd75f);
+background:linear-gradient(135deg,#72ff96,#18d96b);
 
 -webkit-background-clip:text;
 
@@ -393,13 +460,15 @@ max-width:650px;
 .hero-buttons{
 
 display:flex;
-gap:20px;
+gap:18px;
+
+flex-wrap:wrap;
 
 }
 
 .btn{
 
-padding:18px 35px;
+padding:18px 34px;
 
 border:none;
 
@@ -411,7 +480,7 @@ font-size:16px;
 
 font-weight:700;
 
-transition:.4s;
+transition:.35s;
 
 }
 
@@ -421,13 +490,11 @@ background:linear-gradient(135deg,var(--green),var(--green2));
 
 color:#000;
 
-box-shadow:0 0 30px rgba(114,255,150,.3);
-
 }
 
 .btn-primary:hover{
 
-transform:translateY(-5px) scale(1.03);
+transform:translateY(-5px);
 
 }
 
@@ -443,9 +510,9 @@ color:var(--text);
 
 .hero-card{
 
-height:650px;
+height:620px;
 
-border-radius:45px;
+border-radius:42px;
 
 display:flex;
 justify-content:center;
@@ -474,45 +541,14 @@ filter:blur(50px);
 
 }
 
-.hero-card::after{
-
-content:'';
-
-position:absolute;
-
-inset:0;
-
-background:
-linear-gradient(
-120deg,
-transparent,
-rgba(255,255,255,.08),
-transparent
-);
-
-transform:translateX(-100%);
-
-animation:shine 5s infinite;
-
-}
-
-@keyframes shine{
-
-100%{
-transform:translateX(100%);
-}
-
-}
-
 .main-logo{
 
-width:340px;
+width:330px;
 
 animation:floatLogo 6s ease-in-out infinite;
 
 filter:
-drop-shadow(0 0 35px rgba(114,255,150,.5))
-drop-shadow(0 0 60px rgba(114,255,150,.25));
+drop-shadow(0 0 40px rgba(114,255,150,.45));
 
 }
 
@@ -523,7 +559,7 @@ transform:translateY(0px);
 }
 
 50%{
-transform:translateY(-20px) rotate(3deg);
+transform:translateY(-18px) rotate(3deg);
 }
 
 100%{
@@ -532,21 +568,25 @@ transform:translateY(0px);
 
 }
 
-/* SECTION TITLE */
+/* =========================
+TITLES
+========================= */
 
 .section-title{
 
-font-size:58px;
-
-text-align:center;
-
-margin-bottom:60px;
+font-size:56px;
 
 font-weight:900;
 
+text-align:center;
+
+margin-bottom:55px;
+
 }
 
-/* CARDS */
+/* =========================
+CARDS
+========================= */
 
 .cards{
 
@@ -554,66 +594,40 @@ display:grid;
 
 grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
 
-gap:25px;
+gap:24px;
 
 }
 
 .card{
 
-padding:35px;
+padding:34px;
 
-border-radius:35px;
+border-radius:34px;
 
-transition:.4s;
-
-position:relative;
-
-overflow:hidden;
-
-}
-
-.card::before{
-
-content:'';
-
-position:absolute;
-
-width:250px;
-height:250px;
-
-background:radial-gradient(circle,var(--green),transparent);
-
-opacity:.12;
-
-top:-100px;
-left:-100px;
+transition:.35s;
 
 }
 
 .card:hover{
 
-transform:translateY(-12px);
-
-box-shadow:
-0 15px 40px rgba(0,0,0,.35),
-0 0 30px rgba(114,255,150,.18);
+transform:translateY(-10px);
 
 }
 
 .card-icon{
 
-width:75px;
-height:75px;
+width:72px;
+height:72px;
 
-border-radius:24px;
+border-radius:22px;
 
 display:flex;
 align-items:center;
 justify-content:center;
 
-font-size:28px;
+font-size:26px;
 
-margin-bottom:25px;
+margin-bottom:24px;
 
 background:rgba(255,255,255,.08);
 
@@ -633,7 +647,7 @@ margin-bottom:12px;
 
 .price{
 
-font-size:44px;
+font-size:42px;
 
 font-weight:900;
 
@@ -657,7 +671,7 @@ margin-bottom:25px;
 
 width:100%;
 
-padding:16px;
+padding:15px;
 
 border:none;
 
@@ -665,29 +679,23 @@ border-radius:18px;
 
 cursor:pointer;
 
-font-weight:800;
+font-size:15px;
 
-font-size:16px;
+font-weight:800;
 
 background:linear-gradient(135deg,var(--green),var(--green2));
 
 color:#000;
 
-transition:.4s;
-
 }
 
-.buy-btn:hover{
-
-transform:scale(1.02);
-
-}
-
-/* SOCIAL */
+/* =========================
+SOCIAL
+========================= */
 
 .socials{
 
-margin-top:130px;
+margin-top:120px;
 
 }
 
@@ -695,59 +703,37 @@ margin-top:130px;
 
 display:grid;
 
-grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
 
-gap:25px;
+gap:22px;
 
 }
 
 .social{
 
-padding:30px;
+padding:28px;
 
-border-radius:30px;
+border-radius:28px;
 
 text-align:center;
 
-transition:.4s;
+transition:.35s;
 
-position:relative;
+text-decoration:none;
 
-overflow:hidden;
-
-}
-
-.social::before{
-
-content:'';
-
-position:absolute;
-
-width:180px;
-height:180px;
-
-background:radial-gradient(circle,var(--green),transparent);
-
-opacity:.1;
-
-top:-80px;
-right:-80px;
+color:var(--text);
 
 }
 
 .social:hover{
 
-transform:translateY(-10px) scale(1.03);
-
-box-shadow:
-0 15px 35px rgba(0,0,0,.35),
-0 0 30px rgba(114,255,150,.15);
+transform:translateY(-8px);
 
 }
 
 .social i{
 
-font-size:42px;
+font-size:40px;
 
 margin-bottom:18px;
 
@@ -769,52 +755,35 @@ color:var(--sub);
 
 }
 
-/* CTA */
+/* =========================
+CTA
+========================= */
 
 .cta{
 
-margin-top:130px;
+margin-top:120px;
 
-padding:60px;
+padding:55px;
 
-border-radius:45px;
+border-radius:40px;
 
 display:flex;
-
 justify-content:space-between;
 align-items:center;
 
-gap:50px;
-
-overflow:hidden;
-
-position:relative;
+gap:40px;
 
 }
 
-.cta::before{
+.cta img{
 
-content:'';
-
-position:absolute;
-
-width:450px;
-height:450px;
-
-background:radial-gradient(circle,var(--green),transparent);
-
-opacity:.18;
-
-left:-120px;
-bottom:-120px;
-
-filter:blur(60px);
+width:220px;
 
 }
 
 .cta-text h2{
 
-font-size:54px;
+font-size:50px;
 
 margin-bottom:18px;
 
@@ -830,46 +799,18 @@ margin-bottom:30px;
 
 }
 
-.cta img{
-
-width:240px;
-
-filter:
-drop-shadow(0 0 40px rgba(114,255,150,.35));
-
-}
-
-/* FOOTER */
+/* =========================
+FOOTER
+========================= */
 
 footer{
 
 margin-top:120px;
 
-padding:70px 50px 40px;
-
-position:relative;
-
-overflow:hidden;
+padding:70px 0 40px;
 
 border-top:
 1px solid rgba(255,255,255,.08);
-
-}
-
-.footer-bg{
-
-position:absolute;
-
-inset:0;
-
-background:
-linear-gradient(
-180deg,
-transparent,
-rgba(114,255,150,.05)
-);
-
-pointer-events:none;
 
 }
 
@@ -881,19 +822,15 @@ grid-template-columns:2fr 1fr 1fr 1fr;
 
 gap:40px;
 
-position:relative;
-
-z-index:2;
-
 }
 
 .footer-logo{
 
 display:flex;
 align-items:center;
-gap:15px;
+gap:14px;
 
-font-size:32px;
+font-size:30px;
 font-weight:900;
 
 margin-bottom:20px;
@@ -902,7 +839,7 @@ margin-bottom:20px;
 
 .footer-logo img{
 
-width:60px;
+width:58px;
 
 }
 
@@ -912,7 +849,7 @@ line-height:2.1;
 
 color:var(--sub);
 
-max-width:400px;
+max-width:380px;
 
 }
 
@@ -946,15 +883,13 @@ transition:.3s;
 
 color:var(--green);
 
-transform:translateX(-5px);
-
 }
 
 .footer-bottom{
 
-margin-top:50px;
+margin-top:45px;
 
-padding-top:30px;
+padding-top:25px;
 
 border-top:
 1px solid rgba(255,255,255,.08);
@@ -963,21 +898,18 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 
-color:var(--sub);
+gap:20px;
 
 flex-wrap:wrap;
 
-gap:20px;
-
-position:relative;
-z-index:2;
+color:var(--sub);
 
 }
 
 .footer-socials{
 
 display:flex;
-gap:15px;
+gap:14px;
 
 }
 
@@ -1000,7 +932,7 @@ background:var(--glass);
 
 border:1px solid var(--glass-border);
 
-transition:.4s;
+transition:.3s;
 
 }
 
@@ -1014,7 +946,9 @@ transform:translateY(-5px);
 
 }
 
-/* MOBILE */
+/* =========================
+RESPONSIVE
+========================= */
 
 @media(max-width:1150px){
 
@@ -1035,7 +969,7 @@ justify-content:center;
 }
 
 .hero-card{
-height:520px;
+height:500px;
 }
 
 .cta{
@@ -1055,24 +989,126 @@ grid-template-columns:1fr 1fr;
 
 @media(max-width:768px){
 
-.hero-text h1{
-font-size:58px;
+nav{
+
+padding:14px 16px;
+
+border-radius:22px;
+
 }
 
-.section-title{
-font-size:42px;
+.logo{
+
+font-size:20px;
+
+}
+
+.logo img{
+
+width:44px;
+height:44px;
+
 }
 
 .nav-links{
 display:none;
 }
 
+.telegram-btn{
+
+padding:12px 14px;
+
+font-size:14px;
+
+}
+
 .telegram-btn span{
 display:none;
 }
 
-.footer-grid{
+.theme-btn{
+
+width:46px;
+height:46px;
+
+font-size:16px;
+
+border-radius:16px;
+
+}
+
+.hero{
+
+padding-top:40px;
+
+gap:40px;
+
+}
+
+.hero-text h1{
+
+font-size:52px;
+
+}
+
+.hero-text p{
+
+font-size:15px;
+
+}
+
+.hero-card{
+
+height:360px;
+
+}
+
+.main-logo{
+
+width:220px;
+
+}
+
+.section-title{
+
+font-size:38px;
+
+}
+
+.cards{
+
 grid-template-columns:1fr;
+
+}
+
+.social-grid{
+
+grid-template-columns:1fr 1fr;
+
+}
+
+.cta{
+
+padding:35px 25px;
+
+}
+
+.cta h2{
+
+font-size:38px;
+
+}
+
+.cta img{
+
+width:160px;
+
+}
+
+.footer-grid{
+
+grid-template-columns:1fr;
+
 }
 
 .footer-bottom{
@@ -1082,18 +1118,41 @@ text-align:center;
 
 }
 
-.hero-card{
-height:420px;
 }
 
-.main-logo{
-width:250px;
+@media(max-width:480px){
+
+.social-grid{
+
+grid-template-columns:1fr;
+
 }
 
-.cta img{
-width:180px;
+.hero-text h1{
+
+font-size:44px;
+
 }
 
+.hero-buttons{
+
+flex-direction:column;
+
+}
+
+.btn{
+
+width:100%;
+
+}
+
+}
+
+/* FIX CLICK HIGHLIGHT */
+
+button,
+a{
+-webkit-tap-highlight-color:transparent;
 }
 
 </style>
@@ -1104,7 +1163,7 @@ width:180px;
 
 <div class="container">
 
-<!-- NAVBAR -->
+<!-- NAV -->
 
 <nav class="glass">
 
@@ -1127,17 +1186,17 @@ SPOTIOFF
 
 <div class="actions">
 
-<button class="theme-btn glass" id="themeBtn">
+<button class="theme-btn" id="themeBtn">
 
 <i class="fa-solid fa-moon"></i>
 
 </button>
 
-<a href="https://t.me/SpotioffSup" class="telegram-btn">
+<a href="https://t.me/SpotiOffSup" class="telegram-btn">
 
 <i class="fa-brands fa-telegram"></i>
 
-<span>خرید سریع</span>
+<span>پشتیبانی</span>
 
 </a>
 
@@ -1162,10 +1221,9 @@ SPOTIOFF
 
 <p>
 
-سرویس فوق‌سریع و پایدار با ساب اختصاصی،
+سرویس پرسرعت و پایدار با ساب اختصاصی،
 بدون محدودیت تعداد کاربر،
-پینگ پایین،
-امنیت بالا
+پینگ پایین
 و پشتیبانی حرفه‌ای 24/7.
 
 </p>
@@ -1176,8 +1234,6 @@ SPOTIOFF
 
 <button class="btn btn-primary">
 
-<i class="fa-solid fa-bolt"></i>
-
 خرید اشتراک
 
 </button>
@@ -1187,8 +1243,6 @@ SPOTIOFF
 <a href="#socials">
 
 <button class="btn btn-secondary">
-
-<i class="fa-solid fa-layer-group"></i>
 
 شبکه‌های اجتماعی
 
@@ -1259,7 +1313,7 @@ SPOTIOFF
 <p>
 
 مناسب استفاده حرفه‌ای
-و بدون محدودیت دستگاه
+بدون محدودیت دستگاه
 
 </p>
 
@@ -1335,65 +1389,101 @@ SPOTIOFF
 
 <div class="social-grid">
 
-<div class="social glass">
+<!-- TELEGRAM -->
+
+<a
+href="https://t.me/SpotiOffVIP"
+target="_blank"
+class="social glass"
+>
 
 <i class="fa-brands fa-telegram"></i>
 
 <h4>Telegram</h4>
 
-<p>@spotioff</p>
+<p>@SpotiOffVIP</p>
 
-</div>
+</a>
 
-<div class="social glass">
+<!-- RUBIKA -->
+
+<a
+href="https://rubika.ir/SpotiOffVIP"
+target="_blank"
+class="social glass"
+>
 
 <i class="fa-solid fa-cube"></i>
 
 <h4>Rubika</h4>
 
-<p>@spotioff</p>
+<p>@SpotiOffVIP</p>
 
-</div>
+</a>
 
-<div class="social glass">
+<!-- BALE -->
+
+<a
+href="https://ble.ir/SpotiOffVIP"
+target="_blank"
+class="social glass"
+>
 
 <i class="fa-solid fa-circle-check"></i>
 
 <h4>Bale</h4>
 
-<p>@spotioff</p>
+<p>@SpotiOffVIP</p>
 
-</div>
+</a>
 
-<div class="social glass">
+<!-- SOROUSH -->
+
+<a
+href="https://splus.ir/SpotiOffVIP"
+target="_blank"
+class="social glass"
+>
 
 <i class="fa-solid fa-comment"></i>
 
 <h4>Soroush</h4>
 
-<p>@spotioff</p>
+<p>@SpotiOffVIP</p>
 
-</div>
+</a>
 
-<div class="social glass">
+<!-- IGAP -->
+
+<a
+href="https://iGap.net/SpotiOffVIP"
+target="_blank"
+class="social glass"
+>
 
 <i class="fa-solid fa-paper-plane"></i>
 
 <h4>iGap</h4>
 
-<p>@spotioff</p>
+<p>@SpotiOffVIP</p>
 
-</div>
+</a>
 
-<div class="social glass">
+<!-- EITAA -->
+
+<a
+href="https://eitaa.com/SpotiOffVIP"
+target="_blank"
+class="social glass"
+>
 
 <i class="fa-solid fa-globe"></i>
 
 <h4>Eitaa</h4>
 
-<p>@spotioff</p>
+<p>@SpotiOffVIP</p>
 
-</div>
+</a>
 
 </div>
 
@@ -1407,24 +1497,23 @@ SPOTIOFF
 
 <h2>
 
-همین حالا وصل شو
+پشتیبانی سریع
 
 </h2>
 
 <p>
 
-برای خرید اشتراک ویژه،
-دریافت مشاوره رایگان
-و پشتیبانی سریع
+برای خرید اشتراک ویژه
+و دریافت پشتیبانی سریع،
 از طریق تلگرام پیام بده.
 
 </p>
 
-<a href="https://t.me/SpotioffSup" class="telegram-btn">
+<a href="https://t.me/SpotiOffSup" class="telegram-btn">
 
 <i class="fa-brands fa-telegram"></i>
 
-T.me/SpotioffSup
+<span>@SpotiOffSup</span>
 
 </a>
 
@@ -1437,8 +1526,6 @@ T.me/SpotioffSup
 <!-- FOOTER -->
 
 <footer>
-
-<div class="footer-bg"></div>
 
 <div class="footer-grid">
 
@@ -1458,7 +1545,7 @@ SPOTIOFF
 با تمرکز بر سرعت،
 امنیت،
 پایداری
-و تجربه پریمیوم واقعی.
+و تجربه Premium واقعی.
 
 </p>
 
@@ -1491,7 +1578,7 @@ SPOTIOFF
 
 <a href="#">اشتراک ویژه</a>
 <a href="#">ساب اختصاصی</a>
-<a href="#">سرورهای پرسرعت</a>
+<a href="#">سرور پرسرعت</a>
 <a href="#">پشتیبانی 24/7</a>
 
 </div>
@@ -1506,12 +1593,12 @@ SPOTIOFF
 
 <div class="footer-links">
 
-<a href="https://t.me/SpotioffSup">
-Telegram Support
+<a href="https://t.me/SpotiOffSup">
+@SpotiOffSup
 </a>
 
-<a href="#">
-@spotioff
+<a href="https://t.me/SpotiOffVIP">
+@SpotiOffVIP
 </a>
 
 </div>
@@ -1524,22 +1611,22 @@ Telegram Support
 
 <div>
 
-© 2025 SPOTIOFF — All Rights Reserved
+© 2025 SPOTIOFF
 
 </div>
 
 <div class="footer-socials">
 
-<a href="#">
+<a href="https://t.me/SpotiOffVIP">
 <i class="fa-brands fa-telegram"></i>
 </a>
 
-<a href="#">
-<i class="fa-brands fa-instagram"></i>
+<a href="https://rubika.ir/SpotiOffVIP">
+<i class="fa-solid fa-cube"></i>
 </a>
 
-<a href="#">
-<i class="fa-brands fa-x-twitter"></i>
+<a href="https://ble.ir/SpotiOffVIP">
+<i class="fa-solid fa-circle-check"></i>
 </a>
 
 </div>
@@ -1552,25 +1639,27 @@ Telegram Support
 
 <script>
 
+/* =========================
+THEME FIX FINAL
+========================= */
+
 const themeBtn = document.getElementById('themeBtn');
 
-themeBtn.onclick = ()=>{
+let isLight = false;
 
-document.body.classList.toggle('light');
+themeBtn.addEventListener('click', ()=>{
 
-if(document.body.classList.contains('light')){
+isLight = !isLight;
 
-themeBtn.innerHTML =
-'<i class="fa-solid fa-sun"></i>';
+document.body.classList.toggle('light', isLight);
 
-}else{
+themeBtn.innerHTML = isLight
 
-themeBtn.innerHTML =
-'<i class="fa-solid fa-moon"></i>';
+? '<i class="fa-solid fa-sun"></i>'
 
-}
+: '<i class="fa-solid fa-moon"></i>';
 
-}
+});
 
 </script>
 
